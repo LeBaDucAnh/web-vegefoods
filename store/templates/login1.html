@@ -1,0 +1,59 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+<!--header start here-->
+<div class="header" style="background-image: url({% static 'images/bg_2.jpg' %});">
+		<div class="header-main">
+		    <h1 style="color: #82ae46; font-family: 'Roboto Condensed', sans-serif;">VEGEFOODS  LOGIN</h1>
+			<div class="header-bottom">
+				<div class="header-right w3agile">
+					
+					<div class="header-left-bottom agileinfo">
+						
+					 <form action="/login" method="post">
+						{% csrf_token %}
+
+						{% if error%}
+						<div class="alert alert-danger" role="alert">
+							{{error}}
+						</div>
+						{% endif %}
+						<div class="form-group">
+							<input required type="text" name="email" id=""
+							value="{{values.email}}" class="form-control form-control-sm" placeholder="Email" style='width:100%'>
+						</div>
+						<div class="form-group">
+							<input type="password" 
+							name="password" 
+							id=""
+							class="form-control form-control-sm" placeholder="Password" style='width:100%'>
+						</div>	
+						<div class="remember">
+			             <span class="checkbox1">
+							   <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Remember me</label>
+						 </span>
+						 <div class="forgot">
+						 	<h6><a href="#">Forgot Password?</a></h6>
+						 </div>
+						<div class="clear"> </div>
+					  </div>
+					   
+						<input type="submit" value="Login" style="background: #82ae46">
+					</form>	
+					{% comment %} <div class="header-left-top">
+						<div class="sign-up"> <h2>or</h2> </div>
+					
+					</div> {% endcomment %}
+					{% comment %} <div class="header-social wthree">
+							<a href="#" class="face"><h5>Facebook</h5></a>
+							<a href="#" class="twitt"><h5>Twitter</h5></a>
+						</div>
+						 {% endcomment %}
+				</div>
+				</div>
+			  
+			</div>
+		</div>
+</div>
+<!--header end here-->
+{% endblock %}

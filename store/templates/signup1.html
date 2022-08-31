@@ -1,0 +1,85 @@
+{% extends 'base1.html' %}
+{% load static %}
+{% block content %}
+<!--header start here-->
+<div class="header" style="background-image: url({% static 'images/bg_1.jpg' %});">
+		<div class="header-main">
+		    <h1 style="color: #82ae46; font-family: 'Roboto Condensed', sans-serif;">VEGEFOODS  SIGNUP</h1>
+			<div class="header-bottom">
+				<div class="header-right w3agile">
+					
+					<div class="header-left-bottom agileinfo">
+						
+					 <form action="/signup" method="post">
+						{% csrf_token %}
+
+						{% if error%}
+                <div class="alert alert-danger" role="alert">
+                    {{error}}
+                </div>
+                {% endif %}
+					{% comment %} <input type="text"  value="Email" name="name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>
+					<input type="password"  value="Password" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/> {% endcomment %}
+					<div class="form-group">
+                        
+                        <input type="text" name="firstname"
+                         id="" value="{{values.first_name}}" class="form-control form-control-sm" 
+                         placeholder="First Name" style='width:100%'>
+                    </div>
+    
+                    <!-- last name -->
+                    <div class="form-group">
+                        <input type="text" name="lastname" 
+                        id="" value="{{values.last_name}}" class="form-control form-control-sm"
+                        placeholder="Last Name" style='width:100%'>
+                    </div>
+    
+                    <!-- phone -->
+                    <div class="form-group">
+                        {% comment %} <label for="">Phone</label> {% endcomment %}
+                        <input type="text" name="phone" 
+                        id="" class="form-control form-control-sm"
+                        value="{{values.phone}}"
+                        placeholder="Phone" style='width:100%'
+                        >
+                    </div>
+                    <!-- email -->
+                    <div class="form-group">
+                        <input required type="text" name="email" id=""
+                        value="{{values.email}}" class="form-control form-control-sm" placeholder="Email" style='width:100%'>
+                    </div>
+    
+    
+                    <!-- password -->
+                    <div class="form-group">
+                        <input type="password" 
+                        name="password" 
+                        id=""
+                        class="form-control form-control-sm" placeholder="Password" style='width:100%'>
+                    </div>	
+                    <div class="remember">
+						 <div class="forgot">
+						 	<h6><a href="/login"  style="color: black;">You have an account. Login here!</a></h6>
+						 </div>
+						<div class="clear"> </div>
+					  </div>
+					   
+						<input type="submit" value="Signup" style="background: #82ae46">
+					</form>	
+					{% comment %} <div class="header-left-top">
+						<div class="sign-up"> <h2>or</h2> </div>
+					
+					</div> {% endcomment %}
+					{% comment %} <div class="header-social wthree">
+							<a href="#" class="face"><h5>Facebook</h5></a>
+							<a href="#" class="twitt"><h5>Twitter</h5></a>
+						</div>
+						 {% endcomment %}
+				</div>
+				</div>
+			  
+			</div>
+		</div>
+</div>
+<!--header end here-->
+{% endblock %}
