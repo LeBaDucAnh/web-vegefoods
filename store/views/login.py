@@ -9,12 +9,12 @@ class Login(View):
 
     def get(self, request):
         Login.return_url = request.GET.get ('return_url')
-        return render (request, 'login.html')
+        return render (request, 'login1.html')
 
     def post(self, request):
-        email = request.POST.get ('email')
-        password = request.POST.get ('password')
-        customer = Customer.get_customer_by_email (email)
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        customer = Customer.get_customer_by_email(email)
         error_message = None
         if customer:
             flag = check_password (password, customer.password)
@@ -27,13 +27,13 @@ class Login(View):
                     Login.return_url = None
                     return redirect ('homepage')
             else:
-                error_message = 'Invalid !!'
+                error_message = 'Password is not correct !!'
         else:
-            error_message = 'Invalid !!'
+            error_message = 'Customer is not exist !!'
 
         print (email, password)
-        return render (request, 'login.html', {'error': error_message})
+        return render (request, 'login1.html', {'error': error_message})
 
 def logout(request):
     request.session.clear()
-    return redirect('login')
+    return redirect('homepage')

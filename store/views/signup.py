@@ -6,7 +6,7 @@ from django.views import View
 
 class Signup (View):
     def get(self, request):
-        return render (request, 'signup.html')
+        return render (request, 'signup1.html')
 
     def post(self, request):
         postData = request.POST
@@ -35,13 +35,13 @@ class Signup (View):
             print (first_name, last_name, phone, email, password)
             customer.password = make_password (customer.password)
             customer.register ()
-            return redirect ('homepage')
+            return redirect ('login')
         else:
             data = {
                 'error': error_message,
                 'values': value
             }
-            return render (request, 'signup.html', data)
+            return render (request, 'signup1.html', data)
 
     def validateCustomer(self, customer):
         error_message = None
